@@ -1,14 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*
 
+'''
 import sys, getopt
-from parametres import *
+from setup import *
 import csv
+'''
 
 def HowTo():
-    print "La commande s'utilise de la manière suivante:"
-    print "./genCampagneCSV.py <NOM-DE-LA-CAMPAGNE>"
-    print "exemple: ./generationFichierCSV.py Campagne_P_J_1"
+    print("La commande s'utilise de la manière suivante:")
+    print("./genCampagneCSV.py <NOM-DE-LA-CAMPAGNE>")
+    print("exemple: ./generationFichierCSV.py Campagne_P_J_1")
     sys.exit(1)
 
 if len(sys.argv) != 2:
@@ -20,7 +22,7 @@ try:
     fichier = csv.writer(open(str(Fichier_CSV), "wb"))
     fichier.writerow(["Groupe","Machine","Errata","Type Errata","Date Errata","Details Errata"])
 except:
-    print "Impossible d'ouvrir le fichier"+Fichier_CSV+".\nVérifiez que le dossier existe et que le droit d'écriture soit bien positionné."
+    print("Impossible d'ouvrir le fichier",Fichier_CSV,".\nVérifiez que le dossier existe et que le droit d'écriture soit bien positionné.")
     sys.exit(1)
     
 try:
@@ -33,10 +35,10 @@ try:
                 fichier.writerow(['','',str(errata.get('advisory_name')),str(errata.get('advisory_type')),str(errata.get('date')),str(errata.get('advisory_synopsis'))])
             for errata in Client.system.getRelevantErrataByType(Key,host.get('id'),'Bug Fix Advisory'):
                 fichier.writerow(['','',str(errata.get('advisory_name')),str(errata.get('advisory_type')),str(errata.get('date')),str(errata.get('advisory_synopsis'))])
-    print "Le fichier "+str(Fichier_CSV)+" a été généré avec succès."
-    print "Merci de le vérifier et de l'envoyer aux responsables de projets pour valider la mise à jour de leurs serveurs."
+    print("Le fichier ",str(Fichier_CSV)," a été généré avec succès.")
+    print("Merci de le vérifier et de l'envoyer aux responsables de projets pour valider la mise à jour de leurs serveurs.")
 except:
-    print "Erreur lors de la génération du fichier CSV.\nMerci de prévenir l'administrateur.\nFin du script"
+    print("Erreur lors de la génération du fichier CSV.\nMerci de prévenir l'administrateur.\nFin du script")
     sys.exit(1)
 
 Client.auth.logout(Key)

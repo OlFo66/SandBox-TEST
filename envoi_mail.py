@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*
 
+'''
 import sys, getopt
 import os
 import smtplib
@@ -10,6 +11,7 @@ from email.MIMEBase import MIMEBase
 from email.MIMEMultipart import MIMEMultipart
 from email.Utils import formatdate
 from email.MIMEText import MIMEText
+'''
 
 MOIS = sys.argv[5]
 
@@ -21,9 +23,9 @@ message = message+"Cordialement,\n\n"
 message = message+"L'équipe système"
 
 def HowTo():
-    print "La commande s'utilise de la manière suivante:"
-    print "./envoi_mail.py <LISTE_DESTINATAIRES_AVEC_VIRGULE> <ENVOYEUR> <SUJET> <CHEMIN_VERS_PJ> <MOIS_DE_CAMPAGNE>"
-    print "Exemple: ./envoi_mail.py \"user@mail.com,user2@mail.fr\" \"from@mail.de\" \"Ceci est un sujet\" \"./fichiers_csv/Campagne.csv\" AVRIL"
+    print("La commande s'utilise de la manière suivante:")
+    print("./envoi_mail.py <LISTE_DESTINATAIRES_AVEC_VIRGULE> <ENVOYEUR> <SUJET> <CHEMIN_VERS_PJ> <MOIS_DE_CAMPAGNE>")
+    print("Exemple: ./envoi_mail.py \"user@mail.com,user2@mail.fr\" \"from@mail.de\" \"Ceci est un sujet\" \"./fichiers_csv/Campagne.csv\" AVRIL")
     sys.exit(1)   
 
 if len(sys.argv) != 6:

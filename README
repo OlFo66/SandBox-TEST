@@ -1,15 +1,40 @@
-###########################################################################################################################################
-#                                                                                                                                         #
-#                                                                                                                                         #
-#                                                      SpaceWalk Management                                                               #
-#                                                           Version 0.1                                                                   #
-#                                                                                                                                         #
-#                                                        contact@olivierfont.fr                                                           #
-#                                                                                                                                         #
-#                                                                                                                                         #
-###########################################################################################################################################
+######################################################
+#                                                    #
+#                                                    #
+#              SpaceWalk Management                  #
+#                   Version 0.1                      #
+#                                                    #
+#              contact@olivierfont.fr                #
+#                                                    #
+#                                                    #
+######################################################
 
 Worked on SpaceWalk version 2.4
 Worked using Python version 2.7
 Worked for CentOS Servers/workstations
 Last update: there is a long time
+
+TODO:
+Create config file and set values using ConfigParser module. - (https://github.com/python/cpython/blob/3.8/Lib/configparser.py)
+Set tests for every data set using config file.
+write a script to import errata information on CentOS  - (https://cefs.steve-meier.de/)
+
+Remarqs:
+Group of server to patch has to be passed as option
+* errata detail - http://cefs.steve-meier.de/errata.latest.xml
+* errata detail - https://www.redhat.com/security/data/oval/com.redhat.rhsa-all.xml
+
+Good luck with the https://cefs.steve-meier.de/ stuff !!
+
+Modules used:
+* configparser
+* smtplib
+* os
+* sys
+* getopt
+* re
+* email
+* csv
+* iso8601
+* xmlrpc
+* datetime
