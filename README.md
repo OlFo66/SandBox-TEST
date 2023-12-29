@@ -1,8 +1,7 @@
 ![](https://img.shields.io/badge/maintained-nope-red)
 ![](https://img.shields.io/badge/Python-2.7-blue)
 
- ![](https://unixmen.com/wp-content/uploads/2015/08/Spacewalk.png)
-<hr/>
+# ![](https://unixmen.com/wp-content/uploads/2015/08/Spacewalk.png)
 
 # Patch campain management using Spacewalk
 
