@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 ##############################
 #
-#	Script pour la génération du fichier CSV et l'envoie de celui-ci
+#	Script pour la gï¿½nï¿½ration du fichier CSV et l'envoie de celui-ci
 #
 ##############################
 
@@ -16,8 +16,8 @@ SUJET="Campagne_de_patch_Linux"
 MAJ=""
 QUIET="n"
 
-LISTNOGRP="/exploitation/procedures/output/systemes_hors_campagne.csv"
-LIST="/exploitation/procedures/output/campagne.csv"
+LISTNOGRP="<PATH_TO>/systemes_hors_campagne.csv"
+LIST="<PATH_TO>/campagne.csv"
 
 HowTo(){
 	echo -e "La commande s'utilise de la maniÃ¨re suivante:"
@@ -31,22 +31,22 @@ then
 	HowTo
 fi
 
-echo -e "\n${DATE} : Lancement du script de génération et d'envoi des listes de ${SUJET} de ${MOIS}" | tee -a ${FICLOG}
+echo -e "\n${DATE} : Lancement du script de gï¿½nï¿½ration et d'envoi des listes de ${SUJET} de ${MOIS}" | tee -a ${FICLOG}
 
 # Generation rapport
 
 REP="n"
-echo -e "\nGénérer les listes de campagne de patch ? (yYoO) - non par défaut \c"
+echo -e "\nGï¿½nï¿½rer les listes de campagne de patch ? (yYoO) - non par dï¿½faut \c"
 read REP
 case $REP in
 	[yYoO])
 		
-		echo -e "Génération des listes de campagne...\n\t${LISTNOGRP}\n\t${LIST}" | tee -a ${FICLOG}
+		echo -e "Gï¿½nï¿½ration des listes de campagne...\n\t${LISTNOGRP}\n\t${LIST}" | tee -a ${FICLOG}
 		/usr/bin/python ./generationFichierCSV.py ${1}
 		
 		if [ $? -eq 0 ] ; then
-			echo "Liste générée" | tee -a ${FICLOG}
-			echo "Envoyer la liste? (yYoO) - non par défaut"
+			echo "Liste gï¿½nï¿½rï¿½e" | tee -a ${FICLOG}
+			echo "Envoyer la liste? (yYoO) - non par dï¿½faut"
 			read ENVOI
 			
 			case $ENVOI in
@@ -54,22 +54,22 @@ case $REP in
 					echo "Envoi de la liste aux responsables"
 					/usr/bin/python ./envoi_mail.py ${DESTINATAIRE} ${EXPEDITEUR} ${SUJET} "./fichiers_csv/${1}_$(date +%Y-%m-%d).csv" ${MOIS}
 					if [ $? -eq 0 ] ; then
-						echo "Liste envoyée" | tee -a ${FICLOG}
+						echo "Liste envoyï¿½e" | tee -a ${FICLOG}
 					else 
 						echo "ProblÃ¨me lors de l'envoi." | tee -a ${FICLOG}
 						exit 1
 					fi
 					;;
 				*)
-					echo "Liste non (re)envoyée" | tee -a ${FICLOG}
+					echo "Liste non (re)envoyï¿½e" | tee -a ${FICLOG}
 				;;
 			esac		
 		else
-			echo "Erreur lors de la génération des listes"  | tee -a ${FICLOG}
+			echo "Erreur lors de la gï¿½nï¿½ration des listes"  | tee -a ${FICLOG}
 			exit 1
 		fi
 		;;
 	*)
-		echo "Listes non (re)générées" | tee -a ${FICLOG}
+		echo "Listes non (re)gï¿½nï¿½rï¿½es" | tee -a ${FICLOG}
 	;;
 esac
